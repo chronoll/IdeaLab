@@ -6,13 +6,13 @@
     <meta name="robots" content="noindex" />
     <title>idea lab</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <link rel="icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
     <!-- ここからヘッダー -->
     <header>
-       <img src="images/logo.png">
+       <img src="/images/logo.png">
        <h1>Idea Lab</h1>
        <h3>~AIで新たなアイデアを製造!~</h3>
     </header>
@@ -21,9 +21,9 @@
     <!-- ここからメイン -->
     <main>
         <div class="select">
-            <div class="select-true"></div>
+            <div class="select-true">{{$selected_first_keyword}}</div>
             <p>×</p>
-            <div class="select-true"></div>
+            <div class="select-true">{{$selected_second_keyword}}</div>
             <p>×</p>
             <div class="select-false"></div>
         </div>

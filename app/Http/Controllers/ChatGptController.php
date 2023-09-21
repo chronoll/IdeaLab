@@ -51,6 +51,9 @@ class ChatGptController extends Controller
         }
         
         return view('third',['selected_first_keyword'=>$selected_first_keyword,'selected_second_keyword'=>$selected_second_keyword,"third_keywords"=>$third_keywords]);
+        // return view('second',['selected_first_keyword'=>$selected_first_keyword,"second_keywords"=>$third_keywords]);
+    
+        // return view('first',['first_keywords'=>$third_keywords]);
     }
     
     public function get_third_keyword(Request $request) {
@@ -112,7 +115,7 @@ class ChatGptController extends Controller
         $arr = json_decode($json,TRUE);
         $data = $arr;
         // return view("finish",['selected_first_keyword'=>$selected_first_keyword,'selected_second_keyword'=>$selected_second_keyword,"selected_third_keyword"=>$selected_third_keyword]);
-        return view('finish',['data'=>$data]);
+        return view('finish',['selected_first_keyword' => $selected_first_keyword,'selected_second_keyword' => $selected_second_keyword,'selected_third_keyword' => $selected_third_keyword,'data'=>$data]);
     }
 
 }
