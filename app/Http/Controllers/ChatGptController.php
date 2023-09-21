@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ChatGptController extends Controller
 {
     public function first(Request $request){
-        $first_keywords=["いち","に","さん","よん","ご","ろく","なな","はち"];
+        $first_keywords=["勉強","ビジネス","料理","運動","ゲーム","旅行","ファッション","芸術"];
         
     
         return view('first',['first_keywords'=>$first_keywords]);
@@ -21,8 +21,8 @@ class ChatGptController extends Controller
     }
     
     public function second($selected_first_keyword){
-        if($selected_first_keyword=="いち"){
-            $second_keywords=["いちーいち","にーに","さんーさん"];
+        if($selected_first_keyword=="勉強"){
+            $second_keywords=["アカデミック","スキル獲得","職業","教育レベル","学習方法","好きなキーワード"];
         }
         else{
             $second_keywords=["ほかーいち","ほかーに","ほかーさん"];
@@ -43,8 +43,8 @@ class ChatGptController extends Controller
     }
     
     public function third($selected_first_keyword,$selected_second_keyword){
-        if($selected_second_keyword=="いちーいち"){
-            $third_keywords=["いちーいちーいち","いちーいちーに"];
+        if($selected_second_keyword=="アカデミック"){
+            $third_keywords=["授業","レポート", "研究・ゼミ","日常生活", "フィールドワーク","好きなキーワード"];
         }
         else{
             $third_keywords=["ほかーほかーいち","ほかーほかーに"];
@@ -68,7 +68,7 @@ class ChatGptController extends Controller
     public function fourth($selected_first_keyword,$selected_second_keyword,$selected_third_keyword){
         return view("fourth",['selected_first_keyword'=>$selected_first_keyword,'selected_second_keyword'=>$selected_second_keyword,"selected_third_keyword"=>$selected_third_keyword]);
     }
-    
+
     public function get_last_keyword(Request $request){
         $selected_first_keyword = $request->input('first_keyword');
         $selected_second_keyword = $request->input('second_keyword');
@@ -86,20 +86,33 @@ class ChatGptController extends Controller
     }
     
     public function finish($selected_first_keyword,$selected_second_keyword,$selected_third_keyword,$last_keyword){
-        return view("finish",['last_keyword'=>$last_keyword]);
+        
+        $theme_1 = $selected_first_keyword;
+        $theme_2 = $selected_second_keyword;
+        $theme_3 = $selected_third_keyword;
+        $purpose = $last_keyword;
+
+        $txt = $theme_1.'、'.$theme_2.'、' .$theme_3.'に対して、';
+        if ($purpose != ''){
+            $purpose = $purpose.'という';
+        }
+        
+        $question = $txt.$purpose.'疑問・要望を叶えるアイディアを5つ、フォーマットを"[{title,description}]"で、JSON形式で出力せよ。';
+
+        $msg = [
+                ['role' => 'system', 'content' => '日本語での回答'],
+                ['role' => 'user', 'content' => $question],
+            ];
+        $result = OpenAI::chat()->create([
+                    'model' => 'gpt-3.5-turbo',
+                    'messages' => $msg,
+                ]);
+        $json = $result->choices[0]->message->content . PHP_EOL;
+
+        $arr = json_decode($json,TRUE);
+        $data = $arr;
+        // return view("finish",['selected_first_keyword'=>$selected_first_keyword,'selected_second_keyword'=>$selected_second_keyword,"selected_third_keyword"=>$selected_third_keyword]);
+        return view('finish',['data'=>$data]);
     }
-    
-    
-    // public function index()
-    // {
-    //     $msg = [
-    //             ['role' => 'system', 'content' => '日本語での回答'],
-    //             ['role' => 'user', 'content' => 'ドラゴンクエストの誕生について概要を教えて。'],
-    //         ];
-    //     $result = OpenAI::chat()->create([
-    //                 'model' => 'gpt-3.5-turbo',
-    //                 'messages' => $msg,
-    //             ]);
-    //     echo $result->choices[0]->message->content . PHP_EOL;
-    // }
+
 }
