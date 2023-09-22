@@ -8,12 +8,12 @@
     <title>idea lab</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
     <!-- ここからヘッダー -->
     <header>
-       <img src="images/logo.png">
+       <img src="/images/logo.png">
        <h1>Idea Lab</h1>
        <h3>AIで新たなアイデアを製造!</h3>
     </header>

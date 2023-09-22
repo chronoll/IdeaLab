@@ -68,13 +68,13 @@ a {
 /* アイデアのテンプレート */
 .idea-list {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   /* 折り返しをする */
 }
 
 /* スキルカードを3等分する */
 .idea-item-1 {
+  margin-left: 10px;
   width: 30%;
   /* widthが100%を超えたら折り返す */
   background-color: #fff;
@@ -89,6 +89,7 @@ a {
 }
 
 .idea-item-2 {
+  margin-left: 10px;
   width: 30%;
   /* widthが100%を超えたら折り返す */
   background-color: #35AF90;
@@ -100,6 +101,7 @@ a {
 }
 
 .idea-item-3 {
+  margin-left: 10px;
   width: 30%;
   /* widthが100%を超えたら折り返す */
   background-color: #000;
@@ -111,4 +113,85 @@ a {
 
 .idea-item h2 {
   text-align: center;
+}
+
+.select {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.select-true {
+  width: 142px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #35AF90;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.select-false {
+  width: 142px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.ansButton {
+  width: 200px;
+  height: 80px;
+  border-radius: 100px;
+  background-color: #35AF90;
+  text-align: center;
+  /* align-items: center; */
+}
+
+.ansButton p {
+  padding-top: 20px;
+  font-size: 20px;
+  color: #fff;
+  align-items: center;
+}
+
+textarea {
+  width: 750px;
+  height: 250px;
+}
+
+.ans-list {
+  margin-top: 40px;
+  display: flex;
+  /* align-items: center; */
+}
+
+.ans-item {
+  padding-top: 20px;
+  padding-left: 30px;
+  width: 360px;
+  height: 400px;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  flex-shrink: 0;
+  background-color: #FFF;
+}
+
+.ans-title {
+  width: 340px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background-color: #35AF90;
+}
+
+.ans-description {
+  margin-top: 10px;
+  width: 340px;
+  height: 290px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background-color: #35AF90;
 }
