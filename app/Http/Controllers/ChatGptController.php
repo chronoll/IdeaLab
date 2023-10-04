@@ -44,7 +44,7 @@ class ChatGptController extends Controller
     
     public function third($selected_first_keyword,$selected_second_keyword){
         if($selected_second_keyword=="アカデミック"){
-            $third_keywords=["授業","レポート", "研究・ゼミ","日常生活", "フィールドワーク","好きなキーワード"];
+            $third_keywords=["授業","レポート", "研究・ゼミ","日常生活", "フィールドワーク"];
         }
         else{
             $third_keywords=["ほかーほかーいち","ほかーほかーに"];
