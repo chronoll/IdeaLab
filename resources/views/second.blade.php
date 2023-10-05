@@ -6,32 +6,44 @@
     <meta name="robots" content="noindex" />
     <title>idea lab</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <link rel="icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <!-- ホームアイコン -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- プラスアイコン -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
     <!-- ここからヘッダー -->
     <header>
-       <img src="/images/logo.png">
-       <h1>Idea Lab</h1>
-       <h3>~AIで新たなアイデアを製造!~</h3>
+        <img src="images/logo.png">
+        <div class="header-content">
+            <h1>Idea Lab</h1>
+            <h3>~AIで新たなアイデアを製造!~</h3>
+        </div>
+        <a href="/">
+            <span class="material-symbols-outlined">
+                Home
+            </span>   
+        </a>
     </header>
     <!-- ここまでヘッダー -->
 
     <!-- ここからメイン -->
     <main>
         <div class="select">
-            <div class="select-true">{{$selected_first_keyword}}</div>
-            <p>×</p>
-            <div class="select-false"></div>
-            <p>×</p>
-            <div class="select-false"></div>
+            <div class="select-true"><p>{{$selected_first_keyword}}</p></div>
+            <span>×</span>
+            <div class="select-false"><p></p></div>
+            <span>×</span>
+            <div class="select-false"><p></p></div>
         </div>
 
-        <p>あなたの考えをさらに深めよう</p>
+        <p class="text">あなたの考えをさらに深めよう</p>
         <div class="idea-list">
             @foreach ($second_keywords as $keyword)
-                <div class="idea-item-2">
+                <div class="card select-idea-item">
                     <form id="form-{{ $keyword }}" action="/{{$selected_first_keyword}}" method="post">
                         @csrf
                         <input type="hidden" name="first_keyword" value="{{$selected_first_keyword}}">
@@ -42,6 +54,23 @@
                     </div>
                 </div>
             @endforeach
+            <div class="card select-idea-item">
+                <h2>好きなキーワード</h2>
+                <div class="input-idea">
+                    <form id="form-{{ $keyword }}" action="/{{$selected_first_keyword}}" method="post">
+                    @csrf
+                    <input type="hidden" name="first_keyword" value="{{$selected_first_keyword}}">
+                    <input type="text" name="second_keyword" value="">
+                    <button type="submit" class="send-gpt-btn">
+                        <a href="/{{$selected_first_keyword}}/">
+                            <span class="material-symbols-outlined">
+                                library_add
+                            </span>
+                        </a>
+                    </button>
+                    </form>
+                </div>
+            </div>
         </div>
         
     </main>

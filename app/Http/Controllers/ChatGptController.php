@@ -44,7 +44,7 @@ class ChatGptController extends Controller
     
     public function third($selected_first_keyword,$selected_second_keyword){
         if($selected_second_keyword=="アカデミック"){
-            $third_keywords=["授業","レポート", "研究・ゼミ","日常生活", "フィールドワーク","好きなキーワード"];
+            $third_keywords=["授業","レポート", "研究・ゼミ","日常生活", "フィールドワーク"];
         }
         else{
             $third_keywords=["ほかーほかーいち","ほかーほかーに"];
@@ -100,12 +100,14 @@ class ChatGptController extends Controller
             $purpose = $purpose.'という';
         }
         
-        $question = $txt.$purpose.'疑問・要望を叶えるアイディアを5つ、フォーマットを"[{title,description}]"で、JSON形式で出力せよ。';
+        $question = $txt.$purpose.'疑問・要望を叶えるアイディアを5つ、フォーマットを"[{title,description}]"で、JSON形式のみで出力せよ。descriptionは各30字程度';
+        
 
         $msg = [
-                ['role' => 'system', 'content' => '日本語での回答'],
+                ['role' => 'system', 'content' => '日本語で答えて'],
                 ['role' => 'user', 'content' => $question],
             ];
+            
         $result = OpenAI::chat()->create([
                     'model' => 'gpt-3.5-turbo',
                     'messages' => $msg,
@@ -116,6 +118,23 @@ class ChatGptController extends Controller
         $data = $arr;
         // return view("finish",['selected_first_keyword'=>$selected_first_keyword,'selected_second_keyword'=>$selected_second_keyword,"selected_third_keyword"=>$selected_third_keyword]);
         return view('finish',['selected_first_keyword' => $selected_first_keyword,'selected_second_keyword' => $selected_second_keyword,'selected_third_keyword' => $selected_third_keyword,'data'=>$data]);
+    
+        // echo $result->choices[0]->message->content . PHP_EOL;
+    }
+    
+    public function index()
+    {
+        $msg = [
+                ['role' => 'system', 'content' => '日本語で答えて'],
+                ['role' => 'user', 'content' => '今日の運勢を占って'],
+            ];
+        $result = OpenAI::chat()->create([
+                    'model' => 'gpt-3.5-turbo',
+                    'messages' => $msg,
+                    'max_tokens'=>20,
+                    
+                ]);
+        echo $result->choices[0]->message->content . PHP_EOL;
     }
 
 }

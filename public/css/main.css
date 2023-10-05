@@ -1,23 +1,16 @@
+html {
+  font-size: 100%;
+}
+
 body {
-  background-color: #F6FF8C;
+  margin: 0;
+  padding: 0;
+  background-color: #f8fdc5;
 }
 
-header {
-  max-width: 100%;
-  background-color: #35AF90;
-  display: flex;
-  /* justify-content: space-between; */
-  /* flexboxアイテムの最初（左）を起点、最後を終点とし、残りの要素を均等に配置できる指定方法 */
-  height: 180px;
-  padding: 0 4%;
-  align-items: center;
-  /* 縦方向に中央揃え */
-  position: sticky;
-  top: 0;
-}
-
-header h3 {
-  float: left;
+img {
+  max-height: 100px;
+  /* ロゴの高さを調整する必要がある場合に調整 */
 }
 
 p {
@@ -34,7 +27,64 @@ a {
   color: #fff;
 }
 
-/*キーワード検索欄*/
+/* ------ ヘッダー ------ */
+header {
+  max-width: 100%;
+  background-color: #35AF90;
+  display: flex;
+  height: 130px;
+  padding: 0 4%;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 35px;
+  padding-bottom: 5px;
+}
+
+header img {
+  position: sticky;
+  left: 400px;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.material-symbols-outlined {
+  margin: 0 0 2px 10px;
+  font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 48;
+}
+
+footer p {
+  font-size: 11px;
+  text-align: right;
+}
+
+/* ------ index.html ------ */
+.start {
+  background: #FFF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9000;
+}
+
+.start p {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 9999;
+  width: 280px;
+}
+
 .search {
   display: flex;
   justify-content: center;
@@ -52,17 +102,28 @@ a {
   border-radius: 10rem;
 }
 
-.button {
+.send-gpt-btn {
+  border: none;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  background: #35AF90;
+  border-radius: 10px;
 
-  align-items: center;
-  width: 40px;
-  height: 40px;
-
-  background: url(../images/gpt.png), lightgray 50% / cover no-repeat;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .text {
+  margin: 20px 0 10px 0;
   text-align: center;
+}
+
+.text-border {
+  padding: 1rem 0;
+  border-top: 1.5px solid #726f6f;
+  font-weight: bold;
 }
 
 /* アイデアのテンプレート */
@@ -70,18 +131,91 @@ a {
   display: flex;
   flex-wrap: wrap;
   /* 折り返しをする */
+  text-align: center;
+  justify-content: center;
+}
+
+.idea-list h2 {
+  padding-top: 20px;
+  font-size: 1.5rem;
+}
+
+/* 共通のデザイン */
+.card {
+  height: 150px;
+  width: 260px;
+  pointer-events: auto;
+  border-radius: 8px;
+  margin: 0 10px 20px 10px;
+  padding: 30px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.45);
+}
+
+.card:hover {
+  transition: all .5s;
+  box-shadow: 0px 3px 8px #333;
+  transform: scale(1.1);
+}
+
+/* 個別のデザイン */
+.item-study {
+  background-image: url(../images/study.jpg);
+  color: #000;
+}
+
+.item-study h2 {
+  margin-top: 35px;
+}
+
+.item-pe {
+  background-image: url(../images/dumbbells.jpg);
+}
+
+.item-play {
+  background-image: url(../images/lego-blocks.jpg);
+}
+
+.item-health {
+  background-image: url(../images/family.jpg);
+  color: #000;
+}
+
+.item-health p {
+  font-size: 25px;
+  padding-right: 10px;
+}
+
+.item-cook {
+  background-image: url(../images/cook.jpg);
+  color: black;
+}
+
+.item-cook h2 {
+  padding: 30px 0 0 100px;
+}
+
+.item-work {
+  background-image: url(../images/work.jpg);
+  color: #fff;
+}
+
+.item-work h2 {
+  margin-right: 80px;
+  font-size: 20px;
+}
+
+.item-app {
+  background-image: url(../images/app.jpg);
+}
+
+.item-travel {
+  background-image: url(../images/beach.jpg);
 }
 
 /* スキルカードを3等分する */
 .idea-item-1 {
-  margin-left: 10px;
-  width: 30%;
-  /* widthが100%を超えたら折り返す */
   background-color: #fff;
-  border-radius: 16px;
-  margin-bottom: 20px;
-  padding: 30px;
-  box-sizing: border-box;
 }
 
 .idea-item-1 h2 {
@@ -89,37 +223,29 @@ a {
 }
 
 .idea-item-2 {
-  margin-left: 10px;
-  width: 30%;
-  /* widthが100%を超えたら折り返す */
   background-color: #35AF90;
-  ;
-  border-radius: 16px;
-  margin-bottom: 20px;
-  padding: 30px;
-  box-sizing: border-box;
 }
 
 .idea-item-3 {
-  margin-left: 10px;
-  width: 30%;
-  /* widthが100%を超えたら折り返す */
   background-color: #000;
-  border-radius: 16px;
-  margin-bottom: 20px;
-  padding: 30px;
-  box-sizing: border-box;
 }
 
 .idea-item h2 {
   text-align: center;
 }
 
+/* ------ select-〇.html ------ */
 .select {
-  margin-top: 10px;
+  margin-top: 30px;
   display: flex;
   align-items: center;
   text-align: center;
+  justify-content: center;
+}
+
+.select p {
+  padding-top: 8px;
+  color: #fff;
 }
 
 .select-true {
@@ -129,6 +255,7 @@ a {
   border-radius: 10px;
   background: #35AF90;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin: 0 5px 0 5px;
 }
 
 .select-false {
@@ -138,15 +265,20 @@ a {
   border-radius: 10px;
   background: #FFF;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin: 0 5px 0 5px;
 }
 
-.ansButton {
-  width: 200px;
-  height: 80px;
-  border-radius: 100px;
+.select-idea-item {
+  width: 350px;
   background-color: #35AF90;
-  text-align: center;
-  /* align-items: center; */
+  color: #fff;
+  font-size: 20px;
+  overflow-wrap: break-word;
+}
+
+.input-idea {
+  display: flex;
+  padding: 10px 0 0 50px;
 }
 
 .ansButton p {
@@ -156,42 +288,145 @@ a {
   align-items: center;
 }
 
-textarea {
-  width: 750px;
-  height: 250px;
+.idea-textarea {
+  width: 70%;
+  margin: 0 auto;
 }
 
+.idea-textarea textarea {
+  width: 800px;
+  height: 250px;
+  margin: 10px 0 20px 50px;
+}
+
+.idea-textarea .button {
+  text-align: center;
+}
+
+.idea-textarea .button input {
+  border: none;
+  width: 340px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 50px;
+  background-color: #35AF90;
+  color: #fff;
+  font-size: 20px;
+}
+
+.idea-textarea .button input:hover {
+  background: #fff;
+  color: #24292e;
+}
+
+/* ------ answer.html ------ */
 .ans-list {
   margin-top: 40px;
-  display: flex;
-  /* align-items: center; */
+  text-align: center;
+}
+
+.ans-list p {
+  padding-top: 8px;
+  overflow-wrap: break-word;
 }
 
 .ans-item {
-  padding-top: 20px;
-  padding-left: 30px;
   width: 360px;
-  height: 400px;
-  flex-direction: column;
-  justify-content: center;
-  /* align-items: center; */
+  height: 420px;
   flex-shrink: 0;
+  margin: 0 10px 20px 10px;
+  padding: 20px 0 0 20px;
+  border-radius: 1rem;
   background-color: #FFF;
+  list-style: none;
 }
 
 .ans-title {
   width: 340px;
-  height: 50px;
+  height: 70px;
   flex-shrink: 0;
-  border-radius: 10px;
+  border-radius: 1rem;
   background-color: #35AF90;
 }
 
 .ans-description {
   margin-top: 10px;
   width: 340px;
-  height: 290px;
+  height: 320px;
   flex-shrink: 0;
-  border-radius: 10px;
+  border-radius: 1rem;
   background-color: #35AF90;
+}
+
+/* ------ answer.html(スライドショー) ------ */
+.slider {
+  /*横幅94%で左右に余白を持たせて中央寄せ*/
+  width: 80%;
+  margin: 0 auto;
+}
+
+.slider .slick-slide {
+  transform: scale(0.8);
+  transition: all .5s;
+  opacity: 0.5;
+}
+
+.slider .slick-slide.slick-center {
+  transform: scale(1);
+  /*中央だけ等倍に*/
+  opacity: 1;
+}
+
+
+/*矢印の設定*/
+/*戻る、次へ矢印の位置*/
+.slick-prev,
+.slick-next {
+  position: absolute;
+  top: 42%;
+  cursor: pointer;
+  outline: none;
+  border-top: 2px solid #666;
+  border-right: 2px solid #666;
+  height: 15px;
+  width: 15px;
+}
+
+.slick-prev {
+  left: -1.5%;
+  transform: rotate(-135deg);
+}
+
+.slick-next {
+  right: -1.5%;
+  transform: rotate(45deg);
+}
+
+/*ドットナビゲーションの設定*/
+
+.slick-dots {
+  text-align: center;
+  margin: 20px 0 0 0;
+}
+
+.slick-dots li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+/* ドットボタンの設定 */
+.slick-dots button {
+  color: transparent;
+  outline: none;
+  width: 8px;
+  height: 10px;
+  display: block;
+  border-radius: 50%;
+  background: #ccc;
+  /*ドットボタンの色*/
+}
+
+.slick-dots .slick-active button {
+  background: #333;
+  /*ドットボタンの現在地表示の色*/
 }

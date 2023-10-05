@@ -7,15 +7,24 @@
     <meta name="robots" content="noindex" />
     <title>idea lab</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <link rel="icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
     <!-- ここからヘッダー -->
     <header>
        <img src="/images/logo.png">
-       <h1>Idea Lab</h1>
-       <h3>AIで新たなアイデアを製造!</h3>
+       <div class="header-content">
+        <h1>Idea Lab</h1>
+        <h3>~AIで新たなアイデアを製造!~</h3>
+       </div>
+       <a href="/">
+            <span class="material-symbols-outlined">
+                Home
+            </span>   
+        </a>
     </header>
     <!-- ここまでヘッダー -->
 
@@ -23,77 +32,62 @@
     <main>
         <div class="text"><p>すでにアイデアを持っている人は、検索欄からさらに深いアイデアを探しに行きましょう。</p></div>
         <div class="search">
-            <input type="text" class="ki-input" value="キーワードを入れてみよう!!">
-            <input type="submit" class="btbt">
+            <form action="/" method="POST">
+                @csrf
+                <input type="text" class="ki-input" name="keyword" placeholder="キーワードを入れてみよう!!">
+                <button type="submit" class="send-gpt-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="40" viewBox="0,0,256,256">
+                        <g fill="#35af90" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,256v-256h256v256z" id="bgRectangle"></path></g><g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(8.53333,8.53333)"><path d="M14.07031,2c-2.7397,0 -5.08587,1.71626 -6.03125,4.12695c-1.97774,0.26417 -3.74487,1.41772 -4.76172,3.17969c-1.36952,2.37231 -1.05748,5.26118 0.55664,7.28516c-0.75944,1.8443 -0.64484,3.95188 0.37109,5.71289c1.3701,2.3733 4.03086,3.54745 6.5918,3.16016c1.21754,1.58032 3.09904,2.53516 5.13281,2.53516c2.7397,0 5.08587,-1.71626 6.03125,-4.12695c1.97774,-0.26417 3.74487,-1.41772 4.76172,-3.17969c1.36952,-2.37231 1.05748,-5.26118 -0.55664,-7.28516c0.75944,-1.8443 0.64484,-3.95188 -0.37109,-5.71289c-1.3701,-2.3733 -4.03085,-3.54745 -6.5918,-3.16016c-1.21754,-1.58032 -3.09904,-2.53516 -5.13281,-2.53516zM14.07031,4c1.15613,0 2.24033,0.45464 3.06055,1.22656c-0.06263,0.03348 -0.1275,0.05994 -0.18945,0.0957l-4.43945,2.56445c-0.462,0.266 -0.748,0.75897 -0.75,1.29297l-0.02734,5.9668l-2.13477,-1.24609v-5.41992c0,-2.47 2.01047,-4.48047 4.48047,-4.48047zM20.49219,6.4668c1.43525,0.10211 2.79844,0.89164 3.57031,2.22852c0.57799,1.0009 0.72696,2.1675 0.46875,3.26367c-0.06105,-0.03799 -0.11696,-0.08098 -0.17969,-0.11719l-4.44141,-2.56445c-0.462,-0.266 -1.03114,-0.26695 -1.49414,-0.00195l-5.17969,2.96094l0.01172,-2.4707l4.69336,-2.71094c0.80213,-0.46312 1.68963,-0.64916 2.55078,-0.58789zM7.59961,8.26758c-0.00233,0.07118 -0.00977,0.14116 -0.00977,0.21289v5.12695c0,0.534 0.28314,1.02787 0.74414,1.29688l5.1543,3.00586l-2.14453,1.22461l-4.69531,-2.70898c-2.139,-1.235 -2.87367,-3.98209 -1.63867,-6.12109c0.57765,-1.00032 1.51225,-1.71239 2.58984,-2.03711zM18.65625,10.86523l4.69531,2.70899c2.139,1.235 2.87367,3.98209 1.63867,6.12109c-0.57765,1.00032 -1.51225,1.71239 -2.58984,2.03711c0.00233,-0.07118 0.00977,-0.14116 0.00977,-0.21289v-5.12695c0,-0.534 -0.28314,-1.02787 -0.74414,-1.29687l-5.1543,-3.00586zM15.00977,12.94727l1.77148,1.0332l-0.00977,2.05469l-1.78125,1.01758l-1.77148,-1.03516l0.00977,-2.05273zM18.27539,14.85352l2.13477,1.24609v5.41992c0,2.47 -2.01047,4.48047 -4.48047,4.48047c-1.15613,0 -2.24033,-0.45464 -3.06055,-1.22656c0.06263,-0.03348 0.1275,-0.05994 0.18945,-0.0957l4.43945,-2.56445c0.462,-0.266 0.748,-0.75897 0.75,-1.29297zM16.76367,17.76367l-0.01172,2.4707l-4.69336,2.71094c-2.139,1.235 -4.88609,0.49837 -6.12109,-1.64062c-0.57798,-1.0009 -0.72696,-2.1675 -0.46875,-3.26367c0.06105,0.03799 0.11696,0.08098 0.17969,0.11719l4.44141,2.56445c0.462,0.266 1.03114,0.26695 1.49414,0.00195z"></path></g></g>
+                    </svg>
+                </button>
+            </form>
         </div>
         <!-- <div class="button">
             <input type="submit" class="btbt">
         </div> -->
         
-        <form id="keywordForm" action="/" method="POST">
-    @csrf
-    <input type="hidden" name="keyword" id="keywordInput">
-        <div class="text"><p>あなたが作り出したいアイデアはどの分野ですか？</p></div>
+        <form action="/" method="POST">
+        @csrf
+        <input type="hidden" name="keyword" id="keywordInput">
+        <div class="text text-border"><p>あなたが作り出したいアイデアはどの分野ですか？</p></div>
         <div class="idea-list">
-            <div class="idea-item-1">
-                <a href="select.html">
-                    <div>
-                        <h2>{{$first_keywords[0]}}</h2>
-                    </div>
-                </a>
-            </div>
-
-        <div class="idea-item-2">
-            <a href="select.html">
-                <div>
+            <a href="勉強">
+                <div class="card item-study">
+                    <h2>勉強</h2>
+                </div>
+            </a>
+            <a href="運動">
+                <div class="card item-pe">
                     <h2>運動</h2>
                 </div>
             </a>
-        </div>
-
-        <div class="idea-item-3">
-            <a href="select.html">
-                <div>
+            <a href="遊び">
+                <div class="card item-play">
                     <h2>遊び</h2>
                 </div>
             </a>
-        </div>
-
-        <div class="idea-item-3">
-            <a href="select.html">
-                <div>
-                    <h2>健康</h2>
+            <a href="健康">
+                <div class="card item-health">
+                    <p>健康</p>
                 </div>
             </a>
-        </div>
-
-        <div class="idea-item-1">
-            <a href="select.html">
-                <div>
+            <a href="料理">
+                <div class="card item-cook">
                     <h2>料理</h2>
                 </div>
             </a>
-        </div>
-
-        <div class="idea-item-2">
-            <a href="select.html">
-                <div>
+            <a href="ビジネス">
+                <div class="card item-work">
                     <h2>ビジネス</h2>
                 </div>
             </a>
-        </div>
-
-        <div class="idea-item-3">
-            <a href="select.html">
-                <div>
+            <a href="アプリ">
+                <div class="card item-app">
                     <h2>アプリ</h2>
                 </div>
             </a>
-        </div>
-
-        <div class="idea-item-1">
-            <a href="select.html">
-                <div>
+            <a href="旅行">
+                <div class="card item-travel">
                     <h2>旅行</h2>
                 </div>
             </a>
@@ -110,15 +104,3 @@
 </body>
 </html>
 
-<script>
-    const links = document.querySelectorAll('.idea-item-1, .idea-item-2, .idea-item-3');
-
-    links.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            const keyword = this.querySelector('h2').innerText;
-            document.getElementById('keywordInput').value = keyword;
-            document.getElementById('keywordForm').submit();
-        });
-    });
-</script>
